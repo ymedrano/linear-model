@@ -1,0 +1,51 @@
+---
+title: "Linear Model"
+author: "Yanely Medrano"
+date: "7/18/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tigerstats)
+library(tidyverse)
+data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt",sep="",header=TRUE)  
+```
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+###Plot scatterplot
+
+```{r}
+plot(SIMS~ARM,data=data)
+```
+
+
+
+```{r}
+basicNN <- ggplot(data,aes(y=SIMS,x=ARM))
+```
+
+```{r}
+basicNN + geom_point()
+```
+  
+
+The y axis is SIMS and the x axis is ARM. This plot shows that there is a positive linear correlation.
+
+# Numerical results
+
+```{r}
+cor(SIMS~ARM,data=data)
+```
+The value is 0.68, which means that the line will travel upwards and towards the right. 
+
+
