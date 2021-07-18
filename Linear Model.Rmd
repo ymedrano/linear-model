@@ -29,10 +29,12 @@ plot(SIMS~ARM,data=data)
 ```
 
 
+##Now with ggplot - first select the basic data
 
 ```{r}
 basicNN <- ggplot(data,aes(y=SIMS,x=ARM))
 ```
+##Now add in scatterplot
 
 ```{r}
 basicNN + geom_point()
@@ -46,6 +48,21 @@ The y axis is SIMS and the x axis is ARM. This plot shows that there is a positi
 ```{r}
 cor(SIMS~ARM,data=data)
 ```
-The value is 0.68, which means that the line will travel upwards and towards the right. 
+The value is 0.68, which means that the line will travel upwards and towards the right.   
 
+# Inferential  (Build linear model)
+  
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
+The evaluation for the line that fits this data is SIMS is equal to -4.1 + .05 * ARM  
+The formula needed is y = mx + b to create a line  
+
+  
+```{r}
+basicNN + geom_point() + geom_smooth(method=lm)
+``` 
+  
+It looks like the value of the y intercept should be around 1.  
 
